@@ -6,8 +6,8 @@ import (
 )
 
 /*
-#cgo CFLAGS: -I${SRCDIR} -I./
-#cgo LDFLAGS: -L./ -lusearch
+#cgo CFLAGS: -I ${SRCDIR} -I ./
+#cgo LDFLAGS: -L ./ -lusearch
 #include <stdlib.h>
 #include <usearch.h>
 */
