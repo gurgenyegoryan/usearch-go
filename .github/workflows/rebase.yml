@@ -1,0 +1,37 @@
+name: Release
+
+on:
+  push:
+    branches: ["main]
+
+env:
+  BUILD_TYPE: Release
+  GH_TOKEN: ${{ secrets.SEMANTIC_RELEASE_TOKEN }}
+  PYTHONUTF8: 1
+
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+
+jobs:
+  main:
+    if: ${{ github.event.label.name == 'rebase' }}
+    name: Rebase
+    runs-on: ubuntu-latest
+    steps:
+      - name: git checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: automatic rebase
+        uses: cirrus-actions/rebase@1.5
+
+      - name: remove label
+        if: always()
+        uses: actions-ecosystem/action-remove-labels@v1
+        with:
+          labels: rebase
