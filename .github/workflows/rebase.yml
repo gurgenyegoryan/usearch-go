@@ -17,8 +17,7 @@ permissions:
 
 
 jobs:
-  main:
-    if: ${{ github.event.label.name == 'rebase' }}
+  rebase:
     name: Rebase
     runs-on: ubuntu-latest
     steps:
