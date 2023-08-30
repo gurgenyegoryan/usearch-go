@@ -24,6 +24,7 @@ jobs:
       contents: write # for cirrus-actions/rebase to push code to rebase
       pull-requests: read # for cirrus-actions/rebase to get info about PR
     runs-on: ubuntu-latest
+    if: github.event.issue.pull_request != '' && contains(github.event.comment.body, '*')
     steps:
       - name: Checkout the latest code
         uses: actions/checkout@v3
